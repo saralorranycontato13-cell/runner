@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c30q2pg4uaasw"]
+
+[ext_resource type="Texture2D" uid="uid://bs6cjr3ujv4tl" path="res://Assets Godot Runner/Assets Godot Runner/background.png" id="1_evvns"]
+[ext_resource type="Texture2D" uid="uid://cttdpgdvfy2xu" path="res://Assets Godot Runner/Assets Godot Runner/foreground.png" id="2_yq54j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ap6j"]
+size = Vector2(642, 31)
+
+[node name="Jogo" type="Node2D" unique_id=2085565471]
+
+[node name="fundo" type="Sprite2D" parent="." unique_id=350792419]
+position = Vector2(5, 0)
+texture = ExtResource("1_evvns")
+
+[node name="fundo2" type="Sprite2D" parent="." unique_id=1892590829]
+position = Vector2(320, 0)
+texture = ExtResource("1_evvns")
+
+[node name="chao" type="Sprite2D" parent="." unique_id=1279582702]
+position = Vector2(-1, 74)
+texture = ExtResource("2_yq54j")
+
+[node name="chao2" type="Sprite2D" parent="." unique_id=713633210]
+position = Vector2(319, 74)
+texture = ExtResource("2_yq54j")
+
+[node name="chaoFisico" type="StaticBody2D" parent="." unique_id=1881296123]
+
+[node name="corpoChao" type="CollisionShape2D" parent="chaoFisico" unique_id=883627854]
+position = Vector2(160, 76)
+shape = SubResource("RectangleShape2D_1ap6j")
