@@ -7,14 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://cu1f1dfo3beg5" path="res://Assets Godot Runner/Assets Godot Runner/middleground2.png" id="4_8c340"]
 [ext_resource type="Texture2D" uid="uid://c3o3xpeddbsoh" path="res://Assets Godot Runner/Assets Godot Runner/player.png" id="6_8c340"]
 [ext_resource type="Script" uid="uid://brbi1ca14qb5e" path="res://jogador.gd" id="6_45nkh"]
-[ext_resource type="Script" uid="uid://fqmnoshuv5s0" path="res://geradorde_obstaculos.gd" id="8_ysdx3"]
-[ext_resource type="PackedScene" uid="uid://brrm64y17i5nc" path="res://Obstaculo.tscn" id="9_t8pok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ap6j"]
-size = Vector2(1163.5, 79)
+size = Vector2(1160.5, 84.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45nkh"]
-size = Vector2(62, 88)
+size = Vector2(71, 106)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysdx3"]
 atlas = ExtResource("6_8c340")
@@ -70,7 +68,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_2ka1p")
 }],
 "loop": true,
-"name": &"default",
+"name": &"andar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c340")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45nkh")
+}],
+"loop": true,
+"name": &"pular",
 "speed": 5.0
 }, {
 "frames": [{
@@ -99,7 +108,7 @@ metadata/_edit_lock_ = true
 
 [node name="fundo2" type="Sprite2D" parent="." unique_id=1892590829]
 texture_filter = 1
-position = Vector2(1147, 1)
+position = Vector2(1149.0001, 0)
 scale = Vector2(3.60625, 3.6055553)
 texture = ExtResource("1_evvns")
 centered = false
@@ -121,15 +130,15 @@ centered = false
 
 [node name="meioPreto" type="Sprite2D" parent="." unique_id=2082951609]
 texture_filter = 1
-position = Vector2(-3.9999924, 0.99999905)
-scale = Vector2(3.60625, 3.1888888)
+position = Vector2(1704.8124, 281.8125)
+scale = Vector2(3.461328, 3.1201391)
 texture = ExtResource("4_8c340")
 centered = false
 
 [node name="meioPreto2" type="Sprite2D" parent="." unique_id=1284039848]
 texture_filter = 1
-position = Vector2(1151, -0.99993896)
-scale = Vector2(3.590625, 3.127777)
+position = Vector2(584, 286)
+scale = Vector2(3.5500004, 3.166667)
 texture = ExtResource("4_8c340")
 centered = false
 
@@ -150,25 +159,19 @@ centered = false
 [node name="chaoFisico" type="StaticBody2D" parent="." unique_id=1881296123]
 
 [node name="corpoChao" type="CollisionShape2D" parent="chaoFisico" unique_id=883627854]
-position = Vector2(575.75, 605)
+position = Vector2(577.25, 608.25)
 shape = SubResource("RectangleShape2D_1ap6j")
 
 [node name="jogador" type="CharacterBody2D" parent="." unique_id=735139730]
 script = ExtResource("6_45nkh")
 
 [node name="corpojogador" type="CollisionShape2D" parent="jogador" unique_id=166494672]
-position = Vector2(361, 520)
+position = Vector2(210.5, 511)
 shape = SubResource("RectangleShape2D_45nkh")
 
 [node name="imagem" type="AnimatedSprite2D" parent="jogador" unique_id=1962590707]
 texture_filter = 1
-position = Vector2(362.25, 534.75)
-scale = Vector2(2.1979167, 4.010417)
+position = Vector2(210.00002, 526)
+scale = Vector2(3.6354165, 4.03125)
 sprite_frames = SubResource("SpriteFrames_7rhuj")
-animation = &"pular"
-
-[node name="GeradorObstaculos" type="Node2D" parent="." unique_id=1202336255]
-script = ExtResource("8_ysdx3")
-
-[node name="Obstaculo" parent="." unique_id=305574250 instance=ExtResource("9_t8pok")]
-position = Vector2(1302, 300)
+animation = &"andar"

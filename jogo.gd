@@ -4,15 +4,12 @@ func _ready() -> void:
 	velocidade = 400
 
 func _process(delta: float) -> void:
-	# FAZ MOVER
-	$fundo. position.x -= velocidade*delta*0.05
-	$fundo2.position.x -= velocidade*delta*0.05
-	$meioAzul.position.x -= velocidade*delta*1
-	$meioAzul2.position.x -= velocidade*delta*1
-	$meioPreto.position.x -= velocidade*delta*1.5
-	$meioPreto2.position.x -= velocidade*delta*1.5
-	
-	# FAZ REPETIR INFINITAMENTE
+	$fundo. position.x -= velocidade*delta
+	$fundo2.position.x -= velocidade*delta
+	$meioAzul.position.x -= velocidade*delta*0.5
+	$meioAzul2.position.x -= velocidade*delta*2
+	$meioPreto.position.x -= velocidade*delta*2
+	$meioPreto2.position.x -= velocidade*delta*2
 	if $fundo.position.x < -1152:
 		$fundo.position.x = 1152 
 	if $fundo2.position.x < -1152:
