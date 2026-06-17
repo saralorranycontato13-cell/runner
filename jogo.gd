@@ -1,30 +1,37 @@
 extends Node2D
+
 @export var velocidade: int
 func _ready() -> void:
 	velocidade = 400
 
 func _process(delta: float) -> void:
-	$fundo. position.x -= velocidade*delta
-	$fundo2.position.x -= velocidade*delta
-	$meioAzul.position.x -= velocidade*delta*0.5
-	$meioAzul2.position.x -= velocidade*delta*2
-	$meioPreto.position.x -= velocidade*delta*2
-	$meioPreto2.position.x -= velocidade*delta*2
-	if $fundo.position.x < -1152:
-		$fundo.position.x = 1152 
-	if $fundo2.position.x < -1152:
-		$fundo2.position.x = 1152
-	$chao.position.x -= velocidade*delta*2
-	$chao2.position.x -= velocidade*delta*2
-	if $chao.position.x < -1152: 
-		$chao. position.x = 1152 
-	if $chao2.position.x < -1152:
-		$chao2.position.x = 1152
-	if $meioAzul.position.x < -1152:
-		$meioAzul.position.x = 1152 
-	if $meioAzul2.position.x < -1152:
-		$meioAzul2.position.x = 1152
-	if $meioPreto.position.x < -1152:
-		$meioPreto.position.x = 1152 
-	if $meioPreto2.position.x < -1152:
-		$meioPreto2.position.x = 1152
+	# Atualiza os textos da interface buscando as variáveis direto do nó do Jogador
+	# O símbolo $ serve para apontar o caminho exato dos nós
+	$Status/Vida.text = "Vidas: " + str($Jogador.vida)
+	$Status/Pontos.text = "Pontos: " + str($Jogador.pontos)
+	
+	# Opcional: Se a vida chegar a 0, você pode reiniciar o jogo ou pausar
+	if $Jogador.vida <= 0:
+		get_tree().reload_current_scene()
+	
+	# constantemente desloca o sprite pra esquerda
+	$Fundo.position.x -= velocidade*delta*0.05
+	$Fundo2.position.x -= velocidade*delta*0.05
+	if $Fundo.position.x < -1152: # se o fundo sair de cena pela esquerda
+		$Fundo.position.x = 1152  # coloque ele após a cena na direita
+	if $Fundo2.position.x < -1152:
+		$Fundo2.position.x = 1152
+	
+	# constantemente desloca o sprite pra esquerda
+	$Chao.position.x -= velocidade*delta*2
+	$Chao2.position.x -= velocidade*delta*2
+	if $Chao.position.x < -1152: # se o fundo sair de cena pela esquerda
+		$Chao.position.x = 1152  # coloque ele após a cena na direita
+	if $Chao2.position.x < -1152:
+		$Chao2.position.x = 1152
+	$MeioPreto.position.x -= velocidade*delta*0.10
+	$MeioPreto2.position.x -= velocidade*delta*0.10
+	if $MeioPreto.position.x < -1152: # se o fundo sair de cena pela esquerda
+		$MeioPreto.position.x = 1152  # coloque ele após a cena na direita
+		if $MeioAzul.position.x < -1152:
+			$MeioAzul2.position.x = 1152
